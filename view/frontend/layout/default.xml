@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="top.links">
+            <block class="Codilar\B2bSpace\Block\Link\B2bSpace" name="b2b.space.link" after="company.link"
+                   ifconfig="btob/website_configuration/company_active"
+                   template="Magento_Company::company/link.phtml">
+                <arguments>
+                    <argument name="sortOrder" xsi:type="number">100</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
