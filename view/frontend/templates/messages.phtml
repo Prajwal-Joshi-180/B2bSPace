@@ -11,11 +11,3 @@ $customerId = $block->getCustomerId();
         <div class="<?= $message->getCustomerId() == $customerId ? 'right' : 'left' ?>"> <?= $message->getMessage() ?></div>
     <?php endforeach;?>
 </div>
-<div class="message-input-div">
-    <form class="message-form" id="message-form">
-        <label>
-            <input class="message-input" name="message" type="text" placeholder="Enter the message">
-        </label>
-    </form>
-    <button><div class="message-submit"><?= $escaper->escapeHtml(__('Submit'))?></div></button>
-</div>

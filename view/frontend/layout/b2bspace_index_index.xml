@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="Codilar_B2bSpace::js/message.js"/>
+    </head>
     <body>
         <referenceBlock name="breadcrumbs">
             <action method="addCrumb">
@@ -22,7 +25,7 @@
         <referenceBlock name="catalog.topnav" remove="true"/>
         <referenceContainer name="content">
             <block class="Codilar\B2bSpace\Block\B2bSpace" name="b2b_space"
-                   template="Codilar_B2bSpace::b2bspace.phtml"/>
+                   template="Codilar_B2bSpace::b2bspace.phtml" cacheable="false"/>
         </referenceContainer>
     </body>
 </page>
