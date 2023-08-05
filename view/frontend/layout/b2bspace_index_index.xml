@@ -19,6 +19,7 @@
                 </argument>
             </action>
         </referenceBlock>
+        <referenceBlock name="catalog.topnav" remove="true"/>
         <referenceContainer name="content">
             <block class="Codilar\B2bSpace\Block\B2bSpace" name="b2b_space"
                    template="Codilar_B2bSpace::b2bspace.phtml"/>
