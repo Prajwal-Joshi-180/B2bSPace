@@ -47,4 +47,10 @@ class B2bSpace extends Template
     {
         return (int) $this->customerSession->getCustomerId();
     }
+
+    public function getCompany()
+    {
+        $customerId = $this->getCustomerId();
+        return $this->companyManagement->getByCustomerId($customerId);
+    }
 }

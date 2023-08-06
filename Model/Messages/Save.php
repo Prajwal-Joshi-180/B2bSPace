@@ -4,10 +4,9 @@ namespace Codilar\B2bSpace\Model\Messages;
 
 use Codilar\B2bSpace\Model\B2bSpaceFactory as ModelFactory;
 use Codilar\B2bSpace\Model\ResourceModel\B2bSpace as ResourceModel;
-use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Company\Api\CompanyManagementInterface;
+use Magento\Customer\Model\ResourceModel\CustomerRepository;
+use Magento\Customer\Model\Session as CustomerSession;
 use Psr\Log\LoggerInterface;
 
 class Save
@@ -24,6 +23,7 @@ class Save
     private CustomerSession $customerSession;
     private LoggerInterface $logger;
     private CompanyManagementInterface $companyManagement;
+    private CustomerRepository $customerRepository;
 
     /**
      * @param ModelFactory $modelFactory
@@ -37,27 +37,26 @@ class Save
         ResourceModel $resourceModel,
         CustomerSession $customerSession,
         CompanyManagementInterface $companyManagement,
+        CustomerRepository $customerRepository,
         LoggerInterface $logger
     ) {
         $this->modelFactory = $modelFactory;
         $this->resourceModel = $resourceModel;
         $this->customerSession = $customerSession;
         $this->companyManagement = $companyManagement;
+        $this->customerRepository = $customerRepository;
         $this->logger = $logger;
     }
 
-
     public function MessageSave($message): void
     {
-        $writer = new \Zend_Log_Writer_Stream(BP . '/var/log/company.log');
-        $logger = new \Zend_Log();
-        $logger->addWriter($writer);
         $customerId = $this->customerSession->getCustomerId();
+        $customer = $this->customerRepository->getById($customerId);
         $companyId = $this->companyManagement->getByCustomerId($customerId)->getId();
-        $logger->info($companyId);
         $messageModel = $this->modelFactory->create();
         $messageModel->setCustomerId($customerId);
         $messageModel->setCompanyId($companyId);
+        $messageModel->setCustomerName($customer->getFirstname() . ' ' . $customer->getLastname());
         $messageModel->setMessage($message);
         try {
             $this->resourceModel->save($messageModel);

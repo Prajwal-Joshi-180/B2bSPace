@@ -7,7 +7,14 @@ $messageData = $block->getMessageData();
 $customerId = $block->getCustomerId();
 ?>
 <div class="b2b-messages">
-    <?php foreach ($messageData as $message): ?>
-        <div class="<?= $message->getCustomerId() == $customerId ? 'right' : 'left' ?>"> <?= $message->getMessage() ?></div>
-    <?php endforeach;?>
+    <?php if (count($messageData)>0): ?>
+        <?php foreach ($messageData as $message): ?>
+            <div id="<?= $message->getEntityId() ?>" class="b2b_message <?= $message->getCustomerId() == $customerId ? 'right' : 'left' ?>">
+                <div class="label"><?= $escaper->escapeHtml($message->getCustomerName())?></div>
+                <div class="value"><?= $message->getMessage() ?></div>
+            </div>
+        <?php endforeach;?>
+    <?php else: ?>
+        <div class="nomessages"><?= $escaper->escapeHtml(__('No Messages'))?></div>
+    <?php endif; ?>
 </div>

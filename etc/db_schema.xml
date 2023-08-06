@@ -6,6 +6,7 @@
                 comment="Entity ID"/>
         <column xsi:type="varchar" name="customer_id" nullable="true" length="255" comment="Customer Id"/>
         <column xsi:type="varchar" name="company_id" nullable="true" length="255" comment="Company Id"/>
+        <column xsi:type="varchar" name="customer_name" nullable="true" length="255" comment="Customer Name"/>
         <column xsi:type="longtext" name="message" nullable="true" comment="User Message"/>
         <column xsi:type="timestamp" name="created_at"  on_update="false" default="CURRENT_TIMESTAMP" comment="creation time"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
