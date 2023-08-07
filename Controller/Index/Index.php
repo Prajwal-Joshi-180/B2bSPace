@@ -6,10 +6,11 @@ use Magento\Company\Model\CompanyContext;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\Forward;
-use Magento\Framework\Controller\Result\ForwardFactory;
+use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
@@ -27,23 +28,30 @@ class Index implements ActionInterface
     private CompanyContext $companyContext;
 
     /**
-     * @var ForwardFactory
+     * @var ManagerInterface
      */
-    private ForwardFactory $forwardFactory;
+    private ManagerInterface $messageManager;
+    /**
+     * @var RedirectFactory
+     */
+    private RedirectFactory $redirectFactory;
 
     /** Index Constructor
      * @param PageFactory $resultPageFactory
      * @param CompanyContext $companyContext
-     * @param ForwardFactory $forwardFactory
+     * @param ManagerInterface $messageManager
+     * @param RedirectFactory $redirectFactory
      */
     public function __construct(
         PageFactory $resultPageFactory,
         CompanyContext $companyContext,
-        ForwardFactory $forwardFactory
+        ManagerInterface $messageManager,
+        RedirectFactory $redirectFactory,
     ) {
         $this->resultPageFactory = $resultPageFactory;
         $this->companyContext = $companyContext;
-        $this->forwardFactory = $forwardFactory;
+        $this->messageManager = $messageManager;
+        $this->redirectFactory = $redirectFactory;
     }
 
     /**
@@ -53,14 +61,15 @@ class Index implements ActionInterface
      */
     public function execute()
     {
+        $resultRedirect = $this->redirectFactory->create();
         if ($this->companyContext->isCurrentUserCompanyUser()) {
             $resultPage = $this->resultPageFactory->create();
             $resultPage->getConfig()->getTitle()->set(__('B2B Space'));
             return $resultPage;
         } else {
-            $resultForward = $this->forwardFactory->create();
-            $resultForward->forward('noroute');
-            return $resultForward;
+            $this->messageManager->addErrorMessage(__('Only Company User have access to this page'));
+            $resultRedirect->setPath('home');
+            return $resultRedirect;
         }
     }
 }

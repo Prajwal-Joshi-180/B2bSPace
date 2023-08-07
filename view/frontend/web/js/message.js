@@ -4,7 +4,18 @@ require(
         "mage/url",
         "jquery/ui"
     ], function($, url){
-        $(document).on('click', '.message-submit', function() {
+        $(document).ready(function() {
+            // Scrolling Down
+            const b2bMessages = $('.b2b-messages');
+            b2bMessages.scrollTop(b2bMessages[0].scrollHeight);
+
+            // Prevent form submission on pressing Enter key
+            $('.message-form').on('submit', function (event) {
+                event.preventDefault();
+            });
+        });
+
+        $(document).on('click', '.message-submit', function(event) {
             let  message = $('#message-form').serializeArray();
             callAjax(message);
             $('#message-form :input').val('');
@@ -23,6 +34,8 @@ require(
                 data: message,
                 success: function (response) {
                     $(".b2b-messages").html(response.data);
+                    const b2bMessages = $('.b2b-messages');
+                    b2bMessages.scrollTop(b2bMessages[0].scrollHeight);
                 }
             });
         }

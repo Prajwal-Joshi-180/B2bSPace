@@ -8,41 +8,45 @@ $customerId = $block->getCustomerId();
 $company = $block->getCompany();
 ?>
 <h2><?= $escaper->escapeHtml($company->getCompanyName())?></h2>
-<div class="block block-message-search">
-    <div class="block-content">
-        <div class="message-searchbox">
-            <form>
-                <div class="field search">
-                    <div class="control">
-                        <input id="message-search" type="text" class="input-text message-search form-control input-query ui-autocomplete-input" name="q"
-                               placeholder="<?= /** @noEscape */ __('Search Message…') ?>">
-                        <div class="autocomplete-suggestions" style="display: none"></div>
-                        <div class="no-results-found" style="display: none">
-                            <span class="no-results-found"><?= $escaper->escapeHtml(__('No Results Found')) ?></span>
+<div class="b2bspace-main">
+    <div class="block block-message-search">
+        <div class="block-content">
+            <div class="message-searchbox">
+                <form>
+                    <div class="field search">
+                        <div class="control">
+                            <input id="message-search" type="text" class="input-text message-search form-control input-query ui-autocomplete-input" name="q"
+                                   placeholder="<?= /** @noEscape */ __('Search Message…') ?>">
+                            <div class="autocomplete-suggestions" style="display: none"></div>
+                            <div class="no-results-found" style="display: none">
+                                <span class="no-results-found"><?= $escaper->escapeHtml(__('No Results Found')) ?></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<div class="b2b-messages">
-    <?php if (count($messageData)>0): ?>
-        <?php foreach ($messageData as $message): ?>
-            <div id="<?= $message->getEntityId() ?>" class="b2b_message <?= $message->getCustomerId() == $customerId ? 'right' : 'left' ?>">
-                <div class="label"><?= $escaper->escapeHtml($message->getCustomerName())?></div>
-                <div class="value"><?= $message->getMessage() ?></div>
-            </div>
-        <?php endforeach;?>
-    <?php else: ?>
-        <div class="nomessages"><?= $escaper->escapeHtml(__('No Messages'))?></div>
-    <?php endif; ?>
-</div>
-<div class="message-input-div">
-    <form class="message-form" id="message-form">
-        <label>
-            <input class="message-input" name="message" type="text" placeholder="Enter the message">
-        </label>
-    </form>
-    <button><div class="message-submit"><?= $escaper->escapeHtml(__('Submit'))?></div></button>
+    <div class="b2b-messages">
+        <div>
+            <?php if (count($messageData)>0): ?>
+                <?php foreach ($messageData as $message): ?>
+                    <div id="<?= $message->getEntityId() ?>" class="b2b_message <?= $message->getCustomerId() == $customerId ? 'right' : 'left' ?>">
+                        <div class="label"><?= $escaper->escapeHtml($message->getCustomerName())?></div>
+                        <div class="value"><?= $message->getMessage() ?></div>
+                    </div>
+                <?php endforeach;?>
+            <?php else: ?>
+                <div class="nomessages"><?= $escaper->escapeHtml(__('No Messages'))?></div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="message-input-div">
+        <form class="message-form" id="message-form">
+            <label>
+                <input class="message-input" name="message" type="text" placeholder="Enter the message">
+            </label>
+        </form>
+        <button><div class="message-submit"><?= $escaper->escapeHtml(__('Submit'))?></div></button>
+    </div>
 </div>
