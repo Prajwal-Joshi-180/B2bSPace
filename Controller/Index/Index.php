@@ -64,7 +64,7 @@ class Index implements ActionInterface
         $resultRedirect = $this->redirectFactory->create();
         if ($this->companyContext->isCurrentUserCompanyUser()) {
             $resultPage = $this->resultPageFactory->create();
-            $resultPage->getConfig()->getTitle()->set(__('B2B Space'));
+            $resultPage->getConfig()->getTitle()->set(__('B2B Mavericks Hub'));
             return $resultPage;
         } else {
             $this->messageManager->addErrorMessage(__('Only Company User have access to this page'));

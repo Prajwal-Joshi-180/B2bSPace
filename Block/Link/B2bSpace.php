@@ -23,7 +23,7 @@ class B2bSpace extends Link implements \Magento\Customer\Block\Account\SortLinkI
      */
     public function getLabel()
     {
-        return __('B2B Space');
+        return __('B2B Mavericks Hub');
     }
 
     /**
