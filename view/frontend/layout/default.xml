@@ -11,7 +11,7 @@
     <body>
         <referenceBlock name="top.links">
             <block class="Codilar\B2bSpace\Block\Link\B2bSpace" name="b2b.space.link" after="company.link"
-                   ifconfig="btob/website_configuration/company_active"
+                   ifconfig="btob/website_configuration/b2b_space_enable"
                    template="Magento_Company::company/link.phtml">
                 <arguments>
                     <argument name="sortOrder" xsi:type="number">100</argument>

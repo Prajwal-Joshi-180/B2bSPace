@@ -25,8 +25,8 @@ $users = $block->getCompanyUsers($company->getId());
                         <div class="control">
                             <input id="message-search" type="text" class="input-text message-search form-control input-query ui-autocomplete-input" name="search-query"
                                    placeholder="<?= /** @noEscape */ __('Search Message…') ?>">
-                            <div class="autocomplete-suggestions" style="display: none"></div>
-                            <div class="no-results-found" style="display: none">
+                            <div class="autocomplete-suggestions"></div>
+                            <div class="no-results-found">
                                 <span class="no-results-found"><?= $escaper->escapeHtml(__('No Results Found')) ?></span>
                             </div>
                         </div>
@@ -64,7 +64,7 @@ $users = $block->getCompanyUsers($company->getId());
         <button><div class="message-submit"><?= $escaper->escapeHtml(__('Send'))?></div></button>
     </div>
 </div>
-<div class="company-members" id="company-members" style="display: none">
+<div class="company-members" id="company-members">
     <?php foreach ($users as $user): ?>
         <div class="members-name"><span><?= $escaper->escapeHtml(__($user['name']))?></span></div>
         <div class="member-email"><span><?= $escaper->escapeHtml(__($user['email']))?></span></div>

@@ -62,7 +62,9 @@ class Index implements ActionInterface
         $this->redirectFactory = $redirectFactory;
     }
 
-
+    /**
+     * @inheritDoc
+     */
     public function execute()
     {
         $resultRedirect = $this->redirectFactory->create();
