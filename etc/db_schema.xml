@@ -1,7 +1,15 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * @package     Team Ode To Code
+ * @author      Codilar Technologies
+ * @license     https://opensource.org/licenses/OSL-3.0 Open Software License v. 3.0 (OSL-3.0)
+ * @link        http://www.codilar.com/
+ */
+-->
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
-    <table name="b2b_space" resource="default" engine="innodb" comment="Codilar Vendor information is stored here">
+    <table name="b2b_space" resource="default" engine="innodb" comment="B2b Space messages Stored here">
         <column xsi:type="smallint" name="entity_id" unsigned="false" nullable="false" identity="true"
                 comment="Entity ID"/>
         <column xsi:type="varchar" name="customer_id" nullable="true" length="255" comment="Customer Id"/>

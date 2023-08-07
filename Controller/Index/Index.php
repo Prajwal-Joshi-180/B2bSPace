@@ -1,11 +1,18 @@
 <?php
 
+/**
+ * @package     Team Ode To Code
+ * @author      Codilar Technologies
+ * @license     https://opensource.org/licenses/OSL-3.0 Open Software License v. 3.0 (OSL-3.0)
+ * @link        http://www.codilar.com/
+ */
+
 namespace Codilar\B2bSpace\Controller\Index;
 
 use Magento\Company\Model\CompanyContext;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Controller\Result\Forward;
+use Magento\Framework\Controller\Result\Redirect;
 use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\LocalizedException;
@@ -31,6 +38,7 @@ class Index implements ActionInterface
      * @var ManagerInterface
      */
     private ManagerInterface $messageManager;
+
     /**
      * @var RedirectFactory
      */
@@ -54,11 +62,7 @@ class Index implements ActionInterface
         $this->redirectFactory = $redirectFactory;
     }
 
-    /**
-     * @return ResponseInterface|Forward|ResultInterface|Page
-     * @throws LocalizedException
-     * @throws NoSuchEntityException
-     */
+
     public function execute()
     {
         $resultRedirect = $this->redirectFactory->create();

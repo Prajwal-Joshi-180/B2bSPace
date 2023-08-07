@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * @package     Team Ode To Code
+ * @author      Codilar Technologies
+ * @license     https://opensource.org/licenses/OSL-3.0 Open Software License v. 3.0 (OSL-3.0)
+ * @link        http://www.codilar.com/
+ */
+
+
 /** @var Codilar\B2bSpace\Block\B2bSpace $block */
 /** @var \Magento\Framework\Escaper $escaper */
 ?>
@@ -7,11 +16,14 @@ $messageData = $block->getMessageData();
 $customerId = $block->getCustomerId();
 ?>
 <div>
-    <?php if (count($messageData)>0): ?>
+    <?php if (count($messageData) > 0): ?>
         <?php foreach ($messageData as $message): ?>
             <div id="<?= $message->getEntityId() ?>" class="b2b_message <?= $message->getCustomerId() == $customerId ? 'right' : 'left' ?>">
                 <div class="label"><?= $escaper->escapeHtml($message->getCustomerName())?></div>
                 <div class="value"><?= $message->getMessage() ?></div>
+                <?php if ($message->getCustomerId() == $customerId): ?>
+                    <button><span class="delete-message"><?= $escaper->escapeHtml(__('Delete'))?></span></button>
+                <?php endif; ?>
             </div>
         <?php endforeach;?>
     <?php else: ?>

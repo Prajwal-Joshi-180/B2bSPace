@@ -1,5 +1,17 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * @package     Team Ode To Code
+ * @author      Codilar Technologies
+ * @license     https://opensource.org/licenses/OSL-3.0 Open Software License v. 3.0 (OSL-3.0)
+ * @link        http://www.codilar.com/
+ */
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Codilar_B2bSpace"/>
+    <module name="Codilar_B2bSpace">
+        <sequence>
+            <module name="Magento_B2b"/>
+        </sequence>
+    </module>
 </config>

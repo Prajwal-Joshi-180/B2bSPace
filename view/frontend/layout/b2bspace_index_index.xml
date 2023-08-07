@@ -1,4 +1,12 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * @package     Team Ode To Code
+ * @author      Codilar Technologies
+ * @license     https://opensource.org/licenses/OSL-3.0 Open Software License v. 3.0 (OSL-3.0)
+ * @link        http://www.codilar.com/
+ */
+-->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
@@ -15,10 +23,10 @@
                 </argument>
             </action>
             <action method="addCrumb">
-                <argument name="crumbName" xsi:type="string" translate="true">B2B Space</argument>
+                <argument name="crumbName" xsi:type="string" translate="true">B2B Mavericks Hub</argument>
                 <argument name="crumbInfo" xsi:type="array">
-                    <item name="title" xsi:type="string" translate="true">B2B Space</item>
-                    <item name="label" xsi:type="string" translate="true">B2B Space</item>
+                    <item name="title" xsi:type="string" translate="true">B2B Mavericks Hub</item>
+                    <item name="label" xsi:type="string" translate="true">B2B Mavericks Hub</item>
                 </argument>
             </action>
         </referenceBlock>
