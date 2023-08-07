@@ -1,0 +1,200 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container for the messages */
+.b2bspace-main {
+  max-width: 100%;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+}
+
+.b2b-messages{
+  height: 200px;
+  overflow-y: auto;
+}
+
+/* Each message container */
+.b2b_message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+/* Right-aligned messages for the logged-in customer */
+.b2b_message.right {
+  background-color: #DCF8C6;
+  width: 100%;
+  max-width: 270px;
+  margin: auto 0.8% 2% auto;
+}
+
+/* Left-aligned messages for other customers */
+.b2b_message.left {
+  background-color: #fff;
+  width: 50%;
+}
+
+/* Styling for the message sender's name */
+.b2b_message .label {
+  font-weight: bold;
+}
+
+/* Styling for the message text */
+.b2b_message .value {
+  margin-top: 5px;
+}
+
+/* Styling for the message input form */
+.message-input-div {
+  display: flex;
+  margin-top: 20px;
+  gap: 2%;
+}
+
+.message-form {
+  flex: 1;
+}
+
+.message-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button{
+  padding:0;
+}
+
+/* Styling for the submit button */
+.message-submit {
+  background-color: #25D366;
+  color: #fff;
+  padding: 7.5px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.message-submit:hover {
+  background-color: #128C7E;
+}
+
+/* Styling for the search box */
+.message-searchbox {
+  margin-bottom: 20px;
+}
+
+.input-query {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Styling for no messages found */
+.nomessages {
+  text-align: center;
+  font-weight: bold;
+  color: #888;
+}
+
+/* Styling for autocomplete suggestions */
+.autocomplete-suggestions {
+  /* Add your styles here for the autocomplete suggestions dropdown */
+}
+
+/* Styling for no results found */
+.no-results-found {
+  /* Add your styles here for the "No Results Found" message */
+}
+
+.b2bspace-index-index {
+  .page-title-wrapper
+  {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  .head
+  {
+    text-align: center;
+    color: #ffffff;
+    padding-top: 1px;
+    h2
+    {
+      font-size: 32px;
+      font-weight: 400;
+    }
+  }
+  .header-text
+  {
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .block-message-search
+    {
+      width: 50%;
+      margin-bottom: 0px;
+    }
+    .view-all-members
+    {
+      padding: 10px;
+      background: #000;
+      color: white;
+    }
+  }
+
+}
+
+.b2bspace-index-index
+{
+  .modal-popup
+  {
+    .modal-inner-wrap
+    {
+      .modal-content
+      {
+        .company-members
+        {
+          .members-name
+          {
+            font-weight: 600;
+          }
+        }
+      }
+      .modal-footer
+      {
+        button
+        {
+          color: #fff;
+          padding: 5px;
+          background: #000;
+        }
+        }
+      }
+    }
+  }
+.column.main
+{
+  background: darkcyan;
+  .b2bspace-main
+  {
+    background: darkcyan;
+  }
+}
+
+.b2bspace-index-index
+{
+  .page-footer
+  {
+    margin-top: 10px;
+  }
+}

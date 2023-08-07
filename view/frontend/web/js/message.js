@@ -2,8 +2,9 @@ require(
     [
         "jquery",
         "mage/url",
+        "Magento_Ui/js/modal/modal",
         "jquery/ui"
-    ], function($, url){
+    ], function($, url,modal){
         $(document).ready(function() {
             // Scrolling Down
             const b2bMessages = $('.b2b-messages');
@@ -13,6 +14,25 @@ require(
             $('.message-form').on('submit', function (event) {
                 event.preventDefault();
             });
+
+            let options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Members in this Space',
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            let popup = modal(options, $('#company-members'));
+            $(".view-all-members").on('click',function(){
+                $("#company-members").modal("openModal");
+            });
         });
 
         $(document).on('click', '.message-submit', function(event) {
@@ -21,10 +41,10 @@ require(
             $('#message-form :input').val('');
         });
 
-        // setInterval(function() {
-        //     let  message = null;
-        //     callAjax(message);
-        // }, 5000);
+        setInterval(function() {
+            let  message = null;
+            callAjax(message);
+        }, 5000);
 
         function callAjax(message) {
             $.ajax({

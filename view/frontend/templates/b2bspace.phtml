@@ -6,9 +6,10 @@
 $messageData = $block->getMessageData();
 $customerId = $block->getCustomerId();
 $company = $block->getCompany();
+$users = $block->getCompanyUsers($company->getId());
 ?>
-<h2><?= $escaper->escapeHtml($company->getCompanyName())?></h2>
-<div class="b2bspace-main">
+<div class="head"><h2><?= $escaper->escapeHtml($company->getCompanyName())?></h2></div>
+<div class="header-text">
     <div class="block block-message-search">
         <div class="block-content">
             <div class="message-searchbox">
@@ -27,6 +28,9 @@ $company = $block->getCompany();
             </div>
         </div>
     </div>
+<button class="view-all-members"><?= $escaper->escapeHtml(__('View All Members'))?></button>
+</div>
+<div class="b2bspace-main">
     <div class="b2b-messages">
         <div>
             <?php if (count($messageData)>0): ?>
@@ -47,6 +51,12 @@ $company = $block->getCompany();
                 <input class="message-input" name="message" type="text" placeholder="Enter the message">
             </label>
         </form>
-        <button><div class="message-submit"><?= $escaper->escapeHtml(__('Submit'))?></div></button>
+        <button><div class="message-submit"><?= $escaper->escapeHtml(__('Send'))?></div></button>
     </div>
+</div>
+<div class="company-members" id="company-members" style="display: none">
+    <?php foreach ($users as $user): ?>
+        <div class="members-name"><span><?= $escaper->escapeHtml(__($user['name']))?></span></div>
+        <div class="member-email"><span><?= $escaper->escapeHtml(__($user['email']))?></span></div>
+    <?php endforeach; ?>
 </div>
