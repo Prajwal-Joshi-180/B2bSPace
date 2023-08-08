@@ -50,8 +50,8 @@ require(
         /**
          * Call the Ajax after click on send message
          */
-        $(document).on('click', '.message-submit', function(event) {
-            let  message = $('#message-form').serializeArray();
+        $(document).on('click', '.message-submit', function() {
+            let  message = $('.message-input').val();
             callAjax(message);
             $('#message-form :input').val('');
         });
@@ -63,36 +63,28 @@ require(
         $(document).on('click', '.delete-message', function() {
             let parentDiv = $(this).closest(".b2b_message");
             let id = parentDiv.attr("id");
-            $.ajax({
-                url: url.build('b2bspace/index/delete'),
-                type: 'GET',
-                data: {id: id},
-                success: function () {
-                    let message = null;
-                    callAjax(message);
-                }
+            callAjax(null,id);
             });
-        });
 
 
         /**
          * Updating the messages by time interval
          */
         setInterval(function() {
-            let  message = null;
-            callAjax(message);
+            callAjax();
         }, 5000);
 
         /**
          * Ajax function to Update messages
          * @param message
+         * @param id
          */
-        function callAjax(message) {
+        function callAjax(message= null,id = null) {
             $.ajax({
                 url: url.build('b2bspace/index/response'),
                 type: "POST",
                 dataType: "json",
-                data: message,
+                data: {message,id},
                 success: function (response) {
                     $(".b2b-messages").html(response.data);
                     const b2bMessages = $('.b2b-messages');

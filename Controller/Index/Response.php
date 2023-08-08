@@ -9,17 +9,16 @@
 
 namespace Codilar\B2bSpace\Controller\Index;
 
+use Codilar\B2bSpace\Block\B2bSpace;
+use Codilar\B2bSpace\Model\Messages\Delete as MessageDelete;
 use Codilar\B2bSpace\Model\Messages\Save as MessageSave;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\Result\JsonFactory;
-use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Result\PageFactory;
-use Codilar\B2bSpace\Block\B2bSpace;
 
 class Response implements ActionInterface
 {
@@ -45,15 +44,22 @@ class Response implements ActionInterface
     private PageFactory $resultPageFactory;
 
     /**
+     * @var MessageDelete
+     */
+    private MessageDelete $messageDelete;
+
+    /**
      * Response Constructor
      * @param RequestInterface $request
      * @param MessageSave $messageSave
+     * @param MessageDelete $messageDelete
      * @param JsonFactory $resultJsonFactory
      * @param PageFactory $resultPageFactory
      */
     public function __construct(
         RequestInterface $request,
         MessageSave    $messageSave,
+        MessageDelete $messageDelete,
         JsonFactory $resultJsonFactory,
         PageFactory $resultPageFactory
     ) {
@@ -61,8 +67,8 @@ class Response implements ActionInterface
         $this->messageSave = $messageSave;
         $this->resultJsonFactory = $resultJsonFactory;
         $this->resultPageFactory = $resultPageFactory;
+        $this->messageDelete = $messageDelete;
     }
-
 
     /**
      * Ajax Call to Update Message Content
@@ -75,10 +81,13 @@ class Response implements ActionInterface
     {
         $result = $this->resultJsonFactory->create();
         $resultPage = $this->resultPageFactory->create();
-
         $message = $this->request->getParam('message');
+        $messageId = $this->request->getParam('id');
         if ($message) {
             $this->messageSave->MessageSave($message);
+        }
+        if ($messageId) {
+            $this->messageDelete->MessageDelete($messageId);
         }
         $block = $resultPage->getLayout()
             ->createBlock(B2bSpace::class)
